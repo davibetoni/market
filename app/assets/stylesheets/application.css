@@ -7,13 +7,16 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh;
+  height: 120vh;
 }
 
-#map {
-  width: 100%;
-  height: 400px;
-  margin-bottom: 20px;
+.content {
+  max-width: 600px;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
 }
 
 .form-container {
@@ -54,4 +57,67 @@ body {
 
 .form-group button:hover {
   background-color: #218838;
+}
+
+.botao-voltar {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  text-align: center;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.botao-voltar:hover {
+  background-color: #0056b3;
+}
+
+h1 {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+p {
+  font-size: 16px;
+  color: #555;
+  line-height: 1.5;
+  margin-bottom: 15px;
+}
+
+/* Container principal para alinhar .content e .form-container */
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 20px; /* Espaço entre as colunas */
+  padding: 20px;
+}
+
+/* Estilo para o conteúdo de introdução */
+.content {
+  flex: 1;
+}
+
+/* Estilo para o formulário */
+.form-container {
+  flex: 1;
+  max-width: 400px; /* Limita a largura do formulário */
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.btn-primary {
+  margin-top: 10px;
+}
+
+/* Ajuste para telas pequenas */
+@media (max-width: 768px) {
+  .container {
+      flex-direction: column;
+  }
 }

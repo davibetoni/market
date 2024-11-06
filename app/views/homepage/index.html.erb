@@ -1,26 +1,54 @@
-<h1>Página Inicial</h1>
+<div class="container">
+    <div class="content">
+        <h1>Bem-vindo ao Sistema de Localização para Novos Supermercados em Bauru!</h1>
+        <p>
+            Nosso objetivo é ajudar novos empreendimentos a encontrar o ponto ideal para atender ao público de Bauru com eficiência e conveniência. Este sistema foi desenvolvido para auxiliar na escolha de locais estratégicos para a abertura de uma nova loja de supermercado, voltada para atender consumidores com renda familiar per capita de pelo menos 2 salários mínimos.
+        </p>
+        <p>
+            Através de uma análise detalhada e visualização em mapa, identificamos as áreas que melhor atendem aos critérios de acessibilidade, concorrência e presença de negócios complementares. Assim, ajudamos a maximizar as chances de sucesso do empreendimento.
+        </p>
+        <p>Após explorar o mapa, preencha o formulário abaixo para receber informações detalhadas sobre a localização ideal para o seu supermercado.</p>
+    </div>
 
-<!-- Mapa -->
+
+    <div class="form-container">
+        <%= form_with url: homepage_get_info_path, method: :post, local: true do |f| %>
+            <div class="form-group">
+                <%= f.label :valor_a_investir, "Tipo do imóvel:" %><br>
+                <%= f.check_box :valor_a_investir, { multiple: true }, 'compra', nil %> Compra
+                <%= f.check_box :valor_a_investir, { multiple: true }, 'aluguel', nil %> Aluguel
+            </div>
+
+            <div class="form-group">
+                <%= f.label :locais_de_interesse, "Locais de Interesse:" %><br>
+                <%= f.check_box :locais_de_interesse, { multiple: true }, 'regiao_1', nil %> Região 1
+                <%= f.check_box :locais_de_interesse, { multiple: true }, 'regiao_2', nil %> Região 2
+                <%= f.check_box :locais_de_interesse, { multiple: true }, 'regiao_3', nil %> Região 3
+            </div>
+
+            <div class="form-group">
+                <%= f.label :perto_concorrencia, "Perto da Concorrência?" %><br>
+                <%= f.radio_button :perto_concorrencia, 1 %> Sim
+                <%= f.radio_button :perto_concorrencia, 0 %> Não
+            </div>
+
+            <div class="form-group">
+                <%= f.label :perto_comercios, "Perto dos Comercios?" %><br>
+                <%= f.radio_button :perto_comercios, 1 %> Sim
+                <%= f.radio_button :perto_comercios, 0 %> Não
+            </div>
+
+            <div class="form-group">
+                <%= f.label :perto_vias_movimentadas, "Perto de Vias Movimentadas?" %><br>
+                <%= f.radio_button :perto_vias_movimentadas, 1 %> Sim
+                <%= f.radio_button :perto_vias_movimentadas, 0 %> Não
+            </div>
+
+            <div class="form-group">
+                <%= f.submit "Enviar", class: "btn btn-primary" %>
+            </div>
+        <% end %>
+    </div>
+</div>
 
 <%= render 'layouts/map'%>
-
-<!-- Formulário -->
-<div class="form-container">
-    <form>
-        <div class="form-group">
-            <label for="nome">Nome:</label>
-            <input type="text" id="nome" name="nome" required>
-        </div>
-        <div class="form-group">
-            <label for="email">E-mail:</label>
-            <input type="email" id="email" name="email" required>
-        </div>
-        <div class="form-group">
-            <label for="endereco">Endereço:</label>
-            <input type="text" id="endereco" name="endereco" required>
-        </div>
-        <div class="form-group">
-            <button type="submit">Enviar</button>
-        </div>
-    </form>
-</div>
