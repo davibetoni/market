@@ -59,6 +59,7 @@ group :development do
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
 
+  gem 'byebug', '~> 9.0', '>= 9.0.6'
   gem 'error_highlight', '>= 0.4.0', platforms: [:ruby]
 end
 
