@@ -2,45 +2,63 @@
     <div class="content">
         <h1>Bem-vindo ao Sistema de Localização para Novos Supermercados em Bauru!</h1>
         <p>
-            Nosso objetivo é ajudar novos empreendimentos a encontrar o ponto ideal para atender ao público de Bauru com eficiência e conveniência. Este sistema foi desenvolvido para auxiliar na escolha de locais estratégicos para a abertura de uma nova loja de supermercado, voltada para atender consumidores com renda familiar per capita de pelo menos 2 salários mínimos.
+            Nosso objetivo é ajudar novos empreendimentos a encontrar o ponto ideal para atender ao público de Bauru com eficiência e conveniência. Este sistema foi desenvolvido para auxiliar na escolha de locais estratégicos para a abertura de uma nova loja de supermercado, <b>voltado para a área em Bauru com renda predominante maior que 2 salários mínimos</b>.
         </p>
         <p>
-            Através de uma análise detalhada e visualização em mapa, identificamos as áreas que melhor atendem aos critérios de acessibilidade, concorrência e presença de negócios complementares. Assim, ajudamos a maximizar as chances de sucesso do empreendimento.
+            Através de uma análise detalhada e visualização em mapa, que exibe os valores de salário mínimos por região, identificamos as áreas que melhor atendem aos critérios de acessibilidade, concorrência e presença de negócios complementares. Assim, ajudamos a maximizar as chances de sucesso do empreendimento.
         </p>
         <p>Após explorar o mapa, preencha o formulário abaixo para receber informações detalhadas sobre a localização ideal para o seu supermercado.</p>
     </div>
 
     <div class="form-container">
-        <%= form_with url: homepage_get_info_path, method: :post, local: true do |f| %>
+        <%if @errors%>
+            <div class="error-message">
+                <span class="icon">⚠️</span>
+                <div class="text">
+                    <%=@errors.to_s%>
+                </div>
+            </div>
+        <%end%>
+
+        <%= form_with url: homepage_info_path, method: :post, local: true do |f| %>
             <div class="form-group">
-                <%= f.label :valor_a_investir, "Tipo do imóvel:" %><br>
-                <%= f.check_box :valor_a_investir, { multiple: true }, 'compra', nil %> Compra
-                <%= f.check_box :valor_a_investir, { multiple: true }, 'aluguel', nil %> Aluguel
+                <%= f.label :tipo, "Tipo do imóvel:" %><br>
+                <%= f.check_box :tipo, { multiple: true }, 'compra', nil %> Compra
+                <%= f.check_box :tipo, { multiple: true }, 'aluguel', nil %> Aluguel
             </div>
 
             <div class="form-group">
-                <%= f.label :locais_de_interesse, "Locais de Interesse:" %><br>
-                <%= f.check_box :locais_de_interesse, { multiple: true }, 'regiao_1', nil %> Região 1
-                <%= f.check_box :locais_de_interesse, { multiple: true }, 'regiao_2', nil %> Região 2
-                <%= f.check_box :locais_de_interesse, { multiple: true }, 'regiao_3', nil %> Região 3
+                <%= f.label :rendimento, "Selecione o rendimento dos domicílios (salários mínimos)" %>
+                <%= f.select :rendimento, options_for_select([
+                ['Domicílios com Rendimento até 1/8 SM', 'V005'],
+                ['Domicílios com Rendimento > 1/8 a 1/4 SM', 'V006'],
+                ['Domicílios com Rendimento > 1/4 a 1/2 SM', 'V007'],
+                ['Domicílios com Rendimento > 1/2 a 1 SM', 'V008'],
+                ['Domicílios com Rendimento > 1 a 2 SM', 'V009'],
+                ['Domicílios com Rendimento > 2 a 3 SM', 'V010'],
+                ['Domicílios com Rendimento > 3 a 5 SM', 'V011'],
+                ['Domicílios com Rendimento > 5 a 10 SM', 'V012'],
+                ['Domicílios com Rendimento > 10 SM', 'V013'],
+                ['Domicílios sem Rendimento', 'V014']
+                ]), {}, { multiple: true, class: "form-control" } %>
             </div>
 
             <div class="form-group">
-                <%= f.label :perto_concorrencia, "Perto da Concorrência?" %><br>
-                <%= f.radio_button :perto_concorrencia, 1 %> Sim
-                <%= f.radio_button :perto_concorrencia, 0 %> Não
+                <%= f.label :concorrencia, "Perto da Concorrência?" %><br>
+                <%= f.radio_button :concorrencia, 1 %> Sim
+                <%= f.radio_button :concorrencia, 0 %> Não
             </div>
 
             <div class="form-group">
-                <%= f.label :perto_comercios, "Perto dos Comercios?" %><br>
-                <%= f.radio_button :perto_comercios, 1 %> Sim
-                <%= f.radio_button :perto_comercios, 0 %> Não
+                <%= f.label :comercios, "Perto dos Comercios?" %><br>
+                <%= f.radio_button :comercios, 1 %> Sim
+                <%= f.radio_button :comercios, 0 %> Não
             </div>
 
             <div class="form-group">
-                <%= f.label :perto_vias_movimentadas, "Perto de Vias Movimentadas?" %><br>
-                <%= f.radio_button :perto_vias_movimentadas, 1 %> Sim
-                <%= f.radio_button :perto_vias_movimentadas, 0 %> Não
+                <%= f.label :vias_movimentadas, "Perto de Vias Movimentadas?" %><br>
+                <%= f.radio_button :vias_movimentadas, 1 %> Sim
+                <%= f.radio_button :vias_movimentadas, 0 %> Não
             </div>
 
             <div class="form-group">
