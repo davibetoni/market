@@ -1,15 +1,12 @@
-<%= link_to "Voltar", root_path, class: "botao-voltar" %>
-
-<%# talvez colocar a div content aqui %>
-<div>
-    <h1>Bem-vindo ao Sistema de Localização para Novos Supermercados em Bauru!</h1>
+<div class = "content">
+    <h1>Seus resultados</h1>
     <p>
-        Nosso objetivo é ajudar novos empreendimentos a encontrar o ponto ideal para atender ao público de Bauru com eficiência e conveniência. Este sistema foi desenvolvido para auxiliar na escolha de locais estratégicos para a abertura de uma nova loja de supermercado, voltada para atender consumidores com renda familiar per capita de pelo menos 2 salários mínimos.
+        O mapa foi configurado conforme as preferências do usuário, destacando apenas as regiões que atendem aos critérios de rendimento definidos. A visualização foca em setores de Bauru com imóveis em áreas de renda predominante superior a 2 salários mínimos, facilitando uma análise direcionada da distribuição de imóveis conforme o perfil de demanda.</p>
     </p>
     <p>
-        Através de uma análise detalhada e visualização em mapa, identificamos as áreas que melhor atendem aos critérios de acessibilidade, concorrência e presença de negócios complementares. Assim, ajudamos a maximizar as chances de sucesso do empreendimento.
+        Além disso, o mapa exibe a região urbana de Bauru, focando em setores onde o rendimento familiar é majoritariamente superior a 2 salários mínimos. Este filtro atende às escolhas do usuário, mostrando apenas áreas com maior poder aquisitivo para análise de imóveis.</p>
     </p>
-    <p>Após explorar o mapa, preencha o formulário para receber informações detalhadas sobre a localização ideal para o seu supermercado.</p>
+    <%= link_to "Voltar", root_path, class: "botao-voltar" %>
 </div>
 
 <%= render 'layouts/relative_map'%>

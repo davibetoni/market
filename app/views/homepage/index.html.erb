@@ -22,37 +22,36 @@
 
         <%= form_with url: homepage_info_path, method: :post, local: true do |f| %>
             <div class="form-group">
-                <%= f.label :tipo, "Tipo do imóvel:" %><br>
-                <%= f.check_box :tipo, { multiple: true }, 'compra', nil %> Compra
-                <%= f.check_box :tipo, { multiple: true }, 'aluguel', nil %> Aluguel
+                <%= f.label :type, "Tipo do imóvel:" %><br>
+                <%= f.check_box :type, { multiple: true }, 'compra', nil %> Compra
+                <%= f.check_box :type, { multiple: true }, 'aluguel', nil %> Aluguel
             </div>
-
             <div class="form-group">
-                <%= f.label :rendimento, "Selecione o rendimento dos domicílios (salários mínimos)" %>
-                <%= f.select :rendimento, options_for_select([
-                ['Domicílios com Rendimento > 2 a 3 SM', 'V010'],
-                ['Domicílios com Rendimento > 3 a 5 SM', 'V011'],
-                ['Domicílios com Rendimento > 5 a 10 SM', 'V012'],
-                ['Domicílios com Rendimento > 10 SM', 'V013'],
+                <%= f.label :income, "Selecione os rendimentos dos domicílios" %>
+                <%= f.select :income, options_for_select([
+                ['Domicílios com Rendimento > 2 a 3 salários mínimos', @initial_group],
+                ['Domicílios com Rendimento > 3 a 5 salários mínimos', @second_group],
+                ['Domicílios com Rendimento > 5 a 10 salários mínimos', @third_group],
+                ['Domicílios com Rendimento > 10 salários mínimos', @fourth_group],
                 ]), {}, { multiple: true, class: "form-control" } %>
             </div>
 
             <div class="form-group">
-                <%= f.label :concorrencia, "Perto da Concorrência?" %><br>
-                <%= f.radio_button :concorrencia, 1 %> Sim
-                <%= f.radio_button :concorrencia, 0 %> Não
+                <%= f.label :competition, "Perto da Concorrência?" %><br>
+                <%= f.radio_button :competition, 1 %> Sim
+                <%= f.radio_button :competition, 0 %> Não
             </div>
 
             <div class="form-group">
-                <%= f.label :comercios, "Perto dos Comercios?" %><br>
-                <%= f.radio_button :comercios, 1 %> Sim
-                <%= f.radio_button :comercios, 0 %> Não
+                <%= f.label :another_markets, "Perto dos Comercios?" %><br>
+                <%= f.radio_button :another_markets, 1 %> Sim
+                <%= f.radio_button :another_markets, 0 %> Não
             </div>
 
             <div class="form-group">
-                <%= f.label :vias_movimentadas, "Perto de Vias Movimentadas?" %><br>
-                <%= f.radio_button :vias_movimentadas, 1 %> Sim
-                <%= f.radio_button :vias_movimentadas, 0 %> Não
+                <%= f.label :busy_roads, "Perto de Vias Movimentadas?" %><br>
+                <%= f.radio_button :busy_roads, 1 %> Sim
+                <%= f.radio_button :busy_roads, 0 %> Não
             </div>
 
             <div class="form-group">

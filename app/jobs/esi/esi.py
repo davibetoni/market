@@ -2,6 +2,21 @@ import pandas as pd
 import geopandas as gpd
 import folium
 from folium.features import GeoJsonTooltip
+import json
+import sys
+
+params = json.loads(sys.argv[1])
+
+combined_income = []
+
+for item in params['income']:
+    combined_income.extend(json.loads(item))
+
+# print (params['type'])
+# type = params['type']
+# competition = params['concorrencia']
+# stores = params['comercios']
+# busy_streets = params['vias_movimentadas']
 
 shapefile_path = 'app/jobs/esi/files/35SEE250GC_SIR.shp'
 BorderBRU = gpd.read_file(shapefile_path)
@@ -19,7 +34,12 @@ merged_data = BorderBRU.merge(BRU, left_on='CD_GEOCODI', right_on='Cod_setor', h
 income_columns = ['V005', 'V006', 'V007', 'V008', 'V009', 'V010', 'V011', 'V012', 'V013', 'V014']
 merged_data[income_columns] = merged_data[income_columns].apply(pd.to_numeric, errors='coerce')
 
-bauru_data = merged_data[(merged_data['NM_MUNICIP'] == 'BAURU') & (merged_data['TIPO'] == 'URBANO') & (merged_data['Cod_setor'] != '350600305000453')].copy()
+bauru_data = merged_data[
+    (merged_data['NM_MUNICIP'] == 'BAURU') & 
+    (merged_data['TIPO'] == 'URBANO') & 
+    (merged_data['CD_GEOCODI'] != '350600305000453') &
+    (merged_data['Cod_setor'].isin(combined_income))
+].copy()
 
 dominant_groups = {
     'V005': 'Até 1/8 SM',
