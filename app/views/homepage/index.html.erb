@@ -30,16 +30,10 @@
             <div class="form-group">
                 <%= f.label :rendimento, "Selecione o rendimento dos domicílios (salários mínimos)" %>
                 <%= f.select :rendimento, options_for_select([
-                ['Domicílios com Rendimento até 1/8 SM', 'V005'],
-                ['Domicílios com Rendimento > 1/8 a 1/4 SM', 'V006'],
-                ['Domicílios com Rendimento > 1/4 a 1/2 SM', 'V007'],
-                ['Domicílios com Rendimento > 1/2 a 1 SM', 'V008'],
-                ['Domicílios com Rendimento > 1 a 2 SM', 'V009'],
                 ['Domicílios com Rendimento > 2 a 3 SM', 'V010'],
                 ['Domicílios com Rendimento > 3 a 5 SM', 'V011'],
                 ['Domicílios com Rendimento > 5 a 10 SM', 'V012'],
                 ['Domicílios com Rendimento > 10 SM', 'V013'],
-                ['Domicílios sem Rendimento', 'V014']
                 ]), {}, { multiple: true, class: "form-control" } %>
             </div>
 
