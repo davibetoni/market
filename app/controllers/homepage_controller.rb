@@ -53,9 +53,7 @@ class HomepageController < ApplicationController
   end
 
   def must_return
-    params['type'].nil? || params['income'].nil? ||
-      params['income'].empty? || params['competition'].nil? ||
-      params['another_markets'].nil? || params['busy_roads'].nil?
+    params.values_at('type', 'income', 'competition', 'another_markets', 'busy_roads').any?(&:blank?)
   end
 
   def info_params
