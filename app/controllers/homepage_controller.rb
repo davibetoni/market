@@ -53,7 +53,7 @@ class HomepageController < ApplicationController
   end
 
   def must_return
-    params.values_at('type', 'income', 'competition', 'another_markets', 'busy_roads').any?(&:blank?)
+    params.values_at('type', 'income', 'trading', 'another_markets', 'busy_streets').any?(&:blank?)
   end
 
   def info_params

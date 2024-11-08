@@ -12,11 +12,10 @@ combined_income = []
 for item in params['income']:
     combined_income.extend(json.loads(item))
 
-# print (params['type'])
 # type = params['type']
-# competition = params['concorrencia']
-# stores = params['comercios']
-# busy_streets = params['vias_movimentadas']
+# nearby_another_markets = params['another_markets']
+# nearby_trading = params['trading']
+# nearby_busy_streets = params['busy_streets']
 
 shapefile_path = 'app/jobs/esi/files/35SEE250GC_SIR.shp'
 BorderBRU = gpd.read_file(shapefile_path)

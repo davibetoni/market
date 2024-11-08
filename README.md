@@ -1,24 +1,49 @@
-# README
+# Market App
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Este projeto configura uma aplicação Rails com Docker e instala as bibliotecas Python `pandas`, `geopandas`, e `folium` para uso em análises de dados e mapeamento.
 
-Things you may want to cover:
+## Pré-requisitos
 
-* Ruby version
+- [Docker](https://www.docker.com/)
+- [Docker Compose](https://docs.docker.com/compose/)
 
-* System dependencies
+## Estrutura do Projeto
 
-* Configuration
+- **Dockerfile**: Configuração de imagem para a aplicação Rails e bibliotecas Python.
+- **docker-compose.yml**: Configuração do serviço para a aplicação e seu ambiente.
 
-* Database creation
+## Configuração e Execução
 
-* Database initialization
+### Passo 1: Construir a Imagem e Subir o Contêiner
 
-* How to run the test suite
+Execute o seguinte comando para construir a imagem:
 
-* Services (job queues, cache servers, search engines, etc.)
+```console
+docker-compose build
+```
 
-* Deployment instructions
+### Passo 2: Executando a aplicação
 
-* ...
+Em seguida execute o seguinte comando para iniciar o contêiner:
+
+```bash
+docker-compose up
+```
+
+### Passo 3: Acessando a aplicação
+
+Para acessar basta entrar na porta 3000 no navegador:
+
+```bash
+http://localhost:3000
+```
+
+### Passo 4: Parando a Aplicação
+
+Para parar os contêineres, execute:
+
+```bash
+docker-compose down
+```
+
+Ou simplesmente use os comandos "ctrl + c" no console.
