@@ -1,12 +1,24 @@
-<div class = "content">
-    <h1>Seus resultados</h1>
-    <p>
-        O mapa foi configurado conforme as preferências do usuário, destacando apenas as regiões que atendem aos critérios de rendimento definidos. A visualização foca em setores de Bauru com imóveis em áreas de renda predominante superior a 2 salários mínimos, facilitando uma análise direcionada da distribuição de imóveis conforme o perfil de demanda.</p>
-    </p>
-    <p>
-        Além disso, o mapa exibe a região urbana de Bauru, focando em setores onde o rendimento familiar é majoritariamente superior a 2 salários mínimos. Este filtro atende às escolhas do usuário, mostrando apenas áreas com maior poder aquisitivo para análise de imóveis.</p>
-    </p>
-    <%= link_to "Voltar", root_path, class: "botao-voltar" %>
-</div>
+<div class="container">
+    <div class = "content">
+        <h2>Seus resultados</h2>
+        <p>
+            O mapa foi configurado conforme as preferências do usuário, destacando apenas as regiões que atendem aos critérios de rendimento definidos. A visualização foca em setores de Bauru com imóveis em áreas de renda predominante superior a 2 salários mínimos, facilitando uma análise direcionada da distribuição de imóveis conforme o perfil de demanda.</p>
+        </p>
 
+        <p><b>Caso se interesse por uma região, clique nela para acessar o link do imóvel.</b></p>
+    </div>
+
+    <div class = "content">
+        <h2>Suas escolhas: </h2>
+        <ul>
+            <li><b>Tipo de imóvel:</b> <%= @params['type'].join(", ") %></li>
+            <li><b>Perto de outros mercados:</b> <%= @params['another_markets'] == '1' ? "Sim" : "Não" %></li>
+            <li><b>Perto dos Comercios:</b> <%= @params['trading'] == '1' ? "Sim" : "Não" %></li>
+            <li><b>Perto de Vias Movimentadas:</b> <%= @params['busy_streets'] == '1' ? "Sim" : "Não" %></li>
+        </ul>
+        <div>
+            <%= link_to "Faça novamente", root_path, class: "botao-voltar" %>
+        </div>
+    </div>
+</div>
 <%= render 'layouts/relative_map'%>

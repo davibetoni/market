@@ -9,6 +9,7 @@ class HomepageController < ApplicationController
   end
 
   def info
+    @params = params
     params['income'] = params['income'].reject(&:empty?)
 
     if must_return
@@ -18,7 +19,7 @@ class HomepageController < ApplicationController
 
     system("python3 app/jobs/esi/esi.py '#{info_params}'")
 
-    sleep(2)
+    sleep(5)
   end
 
   private
